@@ -35,15 +35,15 @@ func renderCSS(w io.Writer, name string, id int, url string) {
 	}
 }
 
-var m = minify.New()
+var minifier = minify.New()
 
 func init() {
-	m.AddFunc("text/css", css.Minify)
+	minifier.AddFunc("text/css", css.Minify)
 }
 
 func maybeMinify(w io.Writer, r *http.Request) io.Writer {
 	if r.FormValue("minify") == "true" {
-		return m.Writer("text/css", w)
+		return minifier.Writer("text/css", w)
 	}
 	return w
 }
