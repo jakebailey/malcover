@@ -35,6 +35,19 @@ func renderCSS(w io.Writer, name string, id int, url string) {
 	}
 }
 
+var m = minify.New()
+
+func init() {
+	m.AddFunc("text/css", css.Minify)
+}
+
+func maybeMinify(w io.Writer, r *http.Request) io.Writer {
+	if r.FormValue("minify") == "true" {
+		return m.Writer("text/css", w)
+	}
+	return w
+}
+
 func main() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
@@ -47,12 +60,8 @@ func main() {
 
 	c := mal.NewClient(nil)
 
-	m := minify.New()
-	m.AddFunc("text/css", css.Minify)
-
 	r.Route("/:username", func(r chi.Router) {
-		r.Use(middleware.Timeout(5 * time.Second))
-		r.Use(middleware.Throttle(5))
+		r.Use(middleware.ThrottleBacklog(5, 0, 5*time.Second))
 
 		r.Get("/anime.css", func(w http.ResponseWriter, r *http.Request) {
 			username := chi.URLParam(r, "username")
@@ -70,11 +79,7 @@ func main() {
 
 			w.Header().Set("Content-Type", "text/css; charset=utf-8")
 
-			var wr io.Writer = w
-			if r.FormValue("minify") == "true" {
-				wr = m.Writer("text/css", w)
-			}
-
+			wr := maybeMinify(w, r)
 			for _, v := range list.Anime {
 				renderCSS(wr, v.SeriesTitle, v.SeriesAnimeDBID, v.SeriesImage)
 			}
@@ -96,11 +101,7 @@ func main() {
 
 			w.Header().Set("Content-Type", "text/css; charset=utf-8")
 
-			var wr io.Writer = w
-			if r.FormValue("minify") == "true" {
-				wr = m.Writer("text/css", w)
-			}
-
+			wr := maybeMinify(w, r)
 			for _, v := range list.Manga {
 				renderCSS(wr, v.SeriesTitle, v.SeriesMangaDBID, v.SeriesImage)
 			}
