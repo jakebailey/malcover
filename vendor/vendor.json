@@ -1,0 +1,61 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "KAOuThXj4dzpGuMOWh1qa9NPfss=",
+			"path": "github.com/nstratos/go-myanimelist/mal",
+			"revision": "61e347fb67f05f2d3ac340e6f23d251f7ed195f0",
+			"revisionTime": "2017-03-11T11:42:46Z"
+		},
+		{
+			"checksumSHA1": "Uh5TwAFHd+jFgY1SMx6PaUKZNXY=",
+			"path": "github.com/pressly/chi",
+			"revision": "5b7406a71dbb35d4f59b0b48e68cd9f9256f5262",
+			"revisionTime": "2017-03-18T18:44:54Z"
+		},
+		{
+			"checksumSHA1": "9HdWzw76EiC7Hwn+Y2QgNST1Lqc=",
+			"path": "github.com/pressly/chi/middleware",
+			"revision": "5b7406a71dbb35d4f59b0b48e68cd9f9256f5262",
+			"revisionTime": "2017-03-18T18:44:54Z"
+		},
+		{
+			"checksumSHA1": "SOB3whm8gc2xsL6j7exUFghj94s=",
+			"path": "github.com/tdewolff/buffer",
+			"revision": "df6253e2a2cda5aba1b5d0c59fc5bdf0a98ae192",
+			"revisionTime": "2017-01-15T11:41:28Z"
+		},
+		{
+			"checksumSHA1": "kB7VGKebpSN9Jy7Tf+dcGleLWwE=",
+			"path": "github.com/tdewolff/minify",
+			"revision": "689c26d0e5d5d708395a09d5e77c15fc58a7e9ec",
+			"revisionTime": "2017-03-25T09:20:19Z"
+		},
+		{
+			"checksumSHA1": "gxVcoYzjMTnpVAuyqwrOwkY1+/w=",
+			"path": "github.com/tdewolff/minify/css",
+			"revision": "689c26d0e5d5d708395a09d5e77c15fc58a7e9ec",
+			"revisionTime": "2017-03-25T09:20:19Z"
+		},
+		{
+			"checksumSHA1": "EiTbuOQ08YQ0Foy0R8y4WlbVcvA=",
+			"path": "github.com/tdewolff/parse",
+			"revision": "f5b417179f975c1c22d14d0d99505bf1e5ef28f3",
+			"revisionTime": "2017-03-25T09:03:19Z"
+		},
+		{
+			"checksumSHA1": "LpJE/DTRJ3Ct8IY7i0PTrWRehyU=",
+			"path": "github.com/tdewolff/parse/css",
+			"revision": "f5b417179f975c1c22d14d0d99505bf1e5ef28f3",
+			"revisionTime": "2017-03-25T09:03:19Z"
+		},
+		{
+			"checksumSHA1": "hR7GEsOkEtR/doq2kiCmOF8spEg=",
+			"path": "github.com/tdewolff/strconv",
+			"revision": "3e8091f4417ebaaa3910da63a45ea394ebbfb0e3",
+			"revisionTime": "2016-04-27T18:05:39Z"
+		}
+	],
+	"rootPath": "github.com/jakebailey/malcover"
+}
