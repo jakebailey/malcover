@@ -7,9 +7,9 @@ import (
 	"text/template"
 	"time"
 
+	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/middleware"
 	"github.com/nstratos/go-myanimelist/mal"
-	"github.com/pressly/chi"
-	"github.com/pressly/chi/middleware"
 	"github.com/tdewolff/minify"
 	"github.com/tdewolff/minify/css"
 )
@@ -60,7 +60,7 @@ func main() {
 
 	c := mal.NewClient(nil)
 
-	r.Route("/:username", func(r chi.Router) {
+	r.Route("/{username}", func(r chi.Router) {
 		r.Use(middleware.ThrottleBacklog(5, 0, 5*time.Second))
 
 		r.Get("/anime.css", func(w http.ResponseWriter, r *http.Request) {
