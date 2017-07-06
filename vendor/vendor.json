@@ -9,16 +9,28 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "rDUOdbeibU1oRVxkSdv/xL1CqFY=",
-			"path": "github.com/go-chi/chi",
-			"revision": "4cbb5e2f2a0d2898e49f8b2e9eebf3236479c1bf",
-			"revisionTime": "2017-06-28T14:30:38Z"
+			"checksumSHA1": "kjygOPbr5jsND2nU4NJnyyDRVF8=",
+			"path": "github.com/alexflint/go-arg",
+			"revision": "cef6506c97e5731da728c374ff3523e481026423",
+			"revisionTime": "2017-03-30T21:10:29Z"
 		},
 		{
-			"checksumSHA1": "PWhLQ1l6HiWVK0fQNZWdrR96j0o=",
+			"checksumSHA1": "M5vBatiAKUjyLYrb9nS+6QbpEjE=",
+			"path": "github.com/alexflint/go-scalar",
+			"revision": "e80c3b7ed292b052c7083b6fd7154a8422c33f65",
+			"revisionTime": "2017-02-16T02:04:25Z"
+		},
+		{
+			"checksumSHA1": "CtP5X/r7mMSXDpOp1MkXC0n+lX4=",
+			"path": "github.com/go-chi/chi",
+			"revision": "316a2378f7d5e8b76526c5dfc44b33ae892362a7",
+			"revisionTime": "2017-07-05T22:26:22Z"
+		},
+		{
+			"checksumSHA1": "NsqEK1C4CG1dRb4IWpqS9RcnVIQ=",
 			"path": "github.com/go-chi/chi/middleware",
-			"revision": "4cbb5e2f2a0d2898e49f8b2e9eebf3236479c1bf",
-			"revisionTime": "2017-06-28T14:30:38Z"
+			"revision": "316a2378f7d5e8b76526c5dfc44b33ae892362a7",
+			"revisionTime": "2017-07-05T22:26:22Z"
 		},
 		{
 			"checksumSHA1": "KAOuThXj4dzpGuMOWh1qa9NPfss=",

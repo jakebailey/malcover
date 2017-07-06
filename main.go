@@ -1,54 +1,25 @@
 package main
 
 import (
-	"io"
 	"log"
 	"net/http"
-	"text/template"
 	"time"
 
+	"github.com/alexflint/go-arg"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/nstratos/go-myanimelist/mal"
-	"github.com/tdewolff/minify"
-	"github.com/tdewolff/minify/css"
 )
 
-var cssTemplate = template.Must(template.New("css").Parse(`/* {{.Name}} */
-#more{{.ID}} {
-	background-image: url({{.URL}});
-}
-`))
-
-func renderCSS(w io.Writer, name string, id int, url string) {
-	err := cssTemplate.Execute(w, struct {
-		ID   int
-		Name string
-		URL  string
-	}{
-		ID:   id,
-		Name: name,
-		URL:  url,
-	})
-	if err != nil {
-		log.Println(err)
-	}
-}
-
-var minifier = minify.New()
-
-func init() {
-	minifier.AddFunc("text/css", css.Minify)
-}
-
-func maybeMinify(w io.Writer, r *http.Request) io.Writer {
-	if r.FormValue("minify") == "true" {
-		return minifier.Writer("text/css", w)
-	}
-	return w
+var args = struct {
+	Port string
+}{
+	Port: "5000",
 }
 
 func main() {
+	arg.MustParse(&args)
+
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
 	r := chi.NewRouter()
@@ -108,5 +79,7 @@ func main() {
 		})
 	})
 
-	log.Fatal(http.ListenAndServe(":5000", r))
+	addr := ":" + args.Port
+	log.Println("starting server at", addr)
+	log.Fatal(http.ListenAndServe(addr, r))
 }
