@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -12,9 +13,9 @@ import (
 )
 
 var args = struct {
-	Port string
+	Port uint `arg:"env"`
 }{
-	Port: "5000",
+	Port: 5000,
 }
 
 func main() {
@@ -79,7 +80,7 @@ func main() {
 		})
 	})
 
-	addr := ":" + args.Port
+	addr := fmt.Sprintf(":%v", args.Port)
 	log.Println("starting server at", addr)
 	log.Fatal(http.ListenAndServe(addr, r))
 }
