@@ -1,9 +1,9 @@
 package main
 
 import (
-	"html/template"
 	"io"
 	"log"
+	"text/template"
 )
 
 var cssTemplate = template.Must(template.New("css").Parse(`/* {{.Name}} */
