@@ -1,11 +1,5 @@
 {
 	"comment": "",
-	"heroku": {
-		"goVersion": "go1.8",
-		"install": [
-			"./..."
-		]
-	},
 	"ignore": "test",
 	"package": [
 		{
@@ -21,16 +15,16 @@
 			"revisionTime": "2017-02-16T02:04:25Z"
 		},
 		{
-			"checksumSHA1": "CtP5X/r7mMSXDpOp1MkXC0n+lX4=",
+			"checksumSHA1": "fW9JHkoFDG+CKeKn7bQwGEruSME=",
 			"path": "github.com/go-chi/chi",
-			"revision": "316a2378f7d5e8b76526c5dfc44b33ae892362a7",
-			"revisionTime": "2017-07-05T22:26:22Z"
+			"revision": "624e6e12e9bc3b3073f539dab52abecdec01d769",
+			"revisionTime": "2017-09-07T16:24:55Z"
 		},
 		{
-			"checksumSHA1": "NsqEK1C4CG1dRb4IWpqS9RcnVIQ=",
+			"checksumSHA1": "YKrfqJ73/9of8mrxB+DF71305LI=",
 			"path": "github.com/go-chi/chi/middleware",
-			"revision": "316a2378f7d5e8b76526c5dfc44b33ae892362a7",
-			"revisionTime": "2017-07-05T22:26:22Z"
+			"revision": "624e6e12e9bc3b3073f539dab52abecdec01d769",
+			"revisionTime": "2017-09-07T16:24:55Z"
 		},
 		{
 			"checksumSHA1": "KAOuThXj4dzpGuMOWh1qa9NPfss=",
@@ -39,34 +33,34 @@
 			"revisionTime": "2017-03-11T11:42:46Z"
 		},
 		{
-			"checksumSHA1": "SOB3whm8gc2xsL6j7exUFghj94s=",
+			"checksumSHA1": "Dsu5YKdxGeL3Q2VkQ3kuMuebFDc=",
 			"path": "github.com/tdewolff/buffer",
-			"revision": "df6253e2a2cda5aba1b5d0c59fc5bdf0a98ae192",
-			"revisionTime": "2017-01-15T11:41:28Z"
+			"revision": "3fd6d6981daf9f995504e6ae31c005780dca2179",
+			"revisionTime": "2017-09-01T09:15:40Z"
 		},
 		{
 			"checksumSHA1": "aOx9JqecdG4tSpzdRyohR56FUMo=",
 			"path": "github.com/tdewolff/minify",
-			"revision": "2d28d6e43c68537a32f9b835a89d5038ebcb6ec9",
-			"revisionTime": "2017-06-05T20:11:15Z"
+			"revision": "c4e300d8cb20c0f05d326e77199bd6e5d82b2a93",
+			"revisionTime": "2017-08-31T20:51:43Z"
 		},
 		{
-			"checksumSHA1": "8YbF2WE+p+vJquM8j8fvapWmRDg=",
+			"checksumSHA1": "CFeIpbkgtQPzF3zUryUviNEHWGI=",
 			"path": "github.com/tdewolff/minify/css",
-			"revision": "2d28d6e43c68537a32f9b835a89d5038ebcb6ec9",
-			"revisionTime": "2017-06-05T20:11:15Z"
+			"revision": "c4e300d8cb20c0f05d326e77199bd6e5d82b2a93",
+			"revisionTime": "2017-08-31T20:51:43Z"
 		},
 		{
 			"checksumSHA1": "EiTbuOQ08YQ0Foy0R8y4WlbVcvA=",
 			"path": "github.com/tdewolff/parse",
-			"revision": "e3d09bbcbf6d7721468bbe5deb35fe71da57d0f3",
-			"revisionTime": "2017-06-10T22:17:54Z"
+			"revision": "e4ac711ab0bf625c08270ba17557c30b2c1c5c2d",
+			"revisionTime": "2017-07-12T11:51:05Z"
 		},
 		{
 			"checksumSHA1": "DXP+W4tt2j/iMPH50/Ebj/KLlsU=",
 			"path": "github.com/tdewolff/parse/css",
-			"revision": "e3d09bbcbf6d7721468bbe5deb35fe71da57d0f3",
-			"revisionTime": "2017-06-10T22:17:54Z"
+			"revision": "e4ac711ab0bf625c08270ba17557c30b2c1c5c2d",
+			"revisionTime": "2017-07-12T11:51:05Z"
 		},
 		{
 			"checksumSHA1": "hR7GEsOkEtR/doq2kiCmOF8spEg=",
