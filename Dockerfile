@@ -1,8 +1,15 @@
-FROM golang:alpine
+FROM golang:alpine as builder
 
-WORKDIR /go/src/app
-COPY . .
+COPY . /go/src/app
 
-RUN go-wrapper install
+RUN go install -v -ldflags="-s -w" app
 
-CMD ["go-wrapper", "run"]
+
+FROM alpine
+
+RUN apk --no-cache add ca-certificates
+
+COPY --from=builder /go/bin/app /bin/app
+
+EXPOSE 5000
+CMD ["/bin/app"]
