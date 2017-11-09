@@ -140,24 +140,19 @@ func (tt TokenType) String() string {
 
 // Lexer is the state for the lexer.
 type Lexer struct {
-	r *buffer.Lexer
+	r *buffer.MemLexer
 }
 
 // NewLexer returns a new Lexer for a given io.Reader.
 func NewLexer(r io.Reader) *Lexer {
 	return &Lexer{
-		buffer.NewLexer(r),
+		buffer.NewMemLexer(r),
 	}
 }
 
 // Err returns the error encountered during lexing, this is often io.EOF but also other errors can be returned.
 func (l Lexer) Err() error {
 	return l.r.Err()
-}
-
-// Free frees up bytes of length n from previously shifted tokens.
-func (l *Lexer) Free(n int) {
-	l.r.Free(n)
 }
 
 // Next returns the next Token. It returns ErrorToken when an error was encountered. Using Err() one can retrieve the error message.
@@ -389,6 +384,7 @@ func (l *Lexer) consumeCustomVariableToken() bool {
 	// expect to be on a '-'
 	l.r.Move(1)
 	if l.r.Peek(0) != '-' {
+		l.r.Move(-1)
 		return false
 	}
 	if !l.consumeIdentToken() {
@@ -497,7 +493,7 @@ func (l *Lexer) consumeUnicodeRangeToken() bool {
 			}
 		}
 
-		// either a minus or a quenstion mark or the end is expected
+		// either a minus or a question mark or the end is expected
 		if l.consumeByte('-') {
 			// consume another up to 6 hexDigits
 			if l.consumeHexDigit() {

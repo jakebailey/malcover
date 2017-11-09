@@ -3,10 +3,10 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "kjygOPbr5jsND2nU4NJnyyDRVF8=",
+			"checksumSHA1": "gzgvEqDuC40n5CGizmCXAoQ0SH8=",
 			"path": "github.com/alexflint/go-arg",
-			"revision": "cef6506c97e5731da728c374ff3523e481026423",
-			"revisionTime": "2017-03-30T21:10:29Z"
+			"revision": "59fccacb2679dde66e0b20ed65bd26178fcbf54e",
+			"revisionTime": "2017-10-03T00:07:17Z"
 		},
 		{
 			"checksumSHA1": "M5vBatiAKUjyLYrb9nS+6QbpEjE=",
@@ -15,16 +15,16 @@
 			"revisionTime": "2017-02-16T02:04:25Z"
 		},
 		{
-			"checksumSHA1": "fW9JHkoFDG+CKeKn7bQwGEruSME=",
+			"checksumSHA1": "t9W6XhUm1WcC3lfcLdgCm849EmY=",
 			"path": "github.com/go-chi/chi",
-			"revision": "624e6e12e9bc3b3073f539dab52abecdec01d769",
-			"revisionTime": "2017-09-07T16:24:55Z"
+			"revision": "f4d4455cd3e784058861867555171766afa08425",
+			"revisionTime": "2017-11-09T15:45:59Z"
 		},
 		{
-			"checksumSHA1": "YKrfqJ73/9of8mrxB+DF71305LI=",
+			"checksumSHA1": "1DU0HcZDbau9j8ncSogClHxcvqE=",
 			"path": "github.com/go-chi/chi/middleware",
-			"revision": "624e6e12e9bc3b3073f539dab52abecdec01d769",
-			"revisionTime": "2017-09-07T16:24:55Z"
+			"revision": "f4d4455cd3e784058861867555171766afa08425",
+			"revisionTime": "2017-11-09T15:45:59Z"
 		},
 		{
 			"checksumSHA1": "KAOuThXj4dzpGuMOWh1qa9NPfss=",
@@ -33,34 +33,34 @@
 			"revisionTime": "2017-03-11T11:42:46Z"
 		},
 		{
-			"checksumSHA1": "Dsu5YKdxGeL3Q2VkQ3kuMuebFDc=",
+			"checksumSHA1": "H9tMAw127XCYQSH5ESxuHbSaTmE=",
 			"path": "github.com/tdewolff/buffer",
-			"revision": "3fd6d6981daf9f995504e6ae31c005780dca2179",
-			"revisionTime": "2017-09-01T09:15:40Z"
+			"revision": "d2009e63643e90abda1625e00781b5a09eba566b",
+			"revisionTime": "2017-11-07T14:29:34Z"
 		},
 		{
-			"checksumSHA1": "aOx9JqecdG4tSpzdRyohR56FUMo=",
+			"checksumSHA1": "08bnKBE+WyU74MlZ/B4wK9jhHKk=",
 			"path": "github.com/tdewolff/minify",
-			"revision": "c4e300d8cb20c0f05d326e77199bd6e5d82b2a93",
-			"revisionTime": "2017-08-31T20:51:43Z"
+			"revision": "9904fe70e1c1cb5217ed45b24bf9728de3ff10c2",
+			"revisionTime": "2017-11-09T15:44:09Z"
 		},
 		{
-			"checksumSHA1": "CFeIpbkgtQPzF3zUryUviNEHWGI=",
+			"checksumSHA1": "5hupwcfDmRjJ5riFL/SHm0Y43eE=",
 			"path": "github.com/tdewolff/minify/css",
-			"revision": "c4e300d8cb20c0f05d326e77199bd6e5d82b2a93",
-			"revisionTime": "2017-08-31T20:51:43Z"
+			"revision": "9904fe70e1c1cb5217ed45b24bf9728de3ff10c2",
+			"revisionTime": "2017-11-09T15:44:09Z"
 		},
 		{
-			"checksumSHA1": "EiTbuOQ08YQ0Foy0R8y4WlbVcvA=",
+			"checksumSHA1": "CpdQ/opeBcchZazIwB8BguZnVUc=",
 			"path": "github.com/tdewolff/parse",
-			"revision": "e4ac711ab0bf625c08270ba17557c30b2c1c5c2d",
-			"revisionTime": "2017-07-12T11:51:05Z"
+			"revision": "e565695771873acc525929363dcacf0ae75b462f",
+			"revisionTime": "2017-11-09T12:56:32Z"
 		},
 		{
-			"checksumSHA1": "DXP+W4tt2j/iMPH50/Ebj/KLlsU=",
+			"checksumSHA1": "riBbetplx5fPnHTyhowdogmTAYw=",
 			"path": "github.com/tdewolff/parse/css",
-			"revision": "e4ac711ab0bf625c08270ba17557c30b2c1c5c2d",
-			"revisionTime": "2017-07-12T11:51:05Z"
+			"revision": "e565695771873acc525929363dcacf0ae75b462f",
+			"revisionTime": "2017-11-09T12:56:32Z"
 		},
 		{
 			"checksumSHA1": "hR7GEsOkEtR/doq2kiCmOF8spEg=",
