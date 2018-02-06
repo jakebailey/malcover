@@ -1,6 +1,8 @@
-package buffer // import "github.com/tdewolff/buffer"
+package buffer // import "github.com/tdewolff/parse/buffer"
 
-import "io"
+import (
+	"io"
+)
 
 type block struct {
 	buf    []byte
@@ -64,9 +66,9 @@ func (z *bufferPool) free(n int) {
 	}
 }
 
-// Lexer is a buffered reader that allows peeking forward and shifting, taking an io.Reader.
+// StreamLexer is a buffered reader that allows peeking forward and shifting, taking an io.Reader.
 // It keeps data in-memory until Free, taking a byte length, is called to move beyond the data.
-type Lexer struct {
+type StreamLexer struct {
 	r   io.Reader
 	err error
 
@@ -80,31 +82,31 @@ type Lexer struct {
 	free int
 }
 
-// NewLexer returns a new Lexer for a given io.Reader with a 4kB estimated buffer size.
+// NewStreamLexer returns a new StreamLexer for a given io.Reader with a 4kB estimated buffer size.
 // If the io.Reader implements Bytes, that buffer is used instead.
-func NewLexer(r io.Reader) *Lexer {
-	return NewLexerSize(r, defaultBufSize)
+func NewStreamLexer(r io.Reader) *StreamLexer {
+	return NewStreamLexerSize(r, defaultBufSize)
 }
 
-// NewLexerSize returns a new Lexer for a given io.Reader and estimated required buffer size.
+// NewStreamLexerSize returns a new StreamLexer for a given io.Reader and estimated required buffer size.
 // If the io.Reader implements Bytes, that buffer is used instead.
-func NewLexerSize(r io.Reader, size int) *Lexer {
+func NewStreamLexerSize(r io.Reader, size int) *StreamLexer {
 	// if reader has the bytes in memory already, use that instead
 	if buffer, ok := r.(interface {
 		Bytes() []byte
 	}); ok {
-		return &Lexer{
+		return &StreamLexer{
 			err: io.EOF,
 			buf: buffer.Bytes(),
 		}
 	}
-	return &Lexer{
+	return &StreamLexer{
 		r:   r,
 		buf: make([]byte, 0, size),
 	}
 }
 
-func (z *Lexer) read(pos int) byte {
+func (z *StreamLexer) read(pos int) byte {
 	if z.err != nil {
 		return 0
 	}
@@ -139,7 +141,7 @@ func (z *Lexer) read(pos int) byte {
 }
 
 // Err returns the error returned from io.Reader. It may still return valid bytes for a while though.
-func (z *Lexer) Err() error {
+func (z *StreamLexer) Err() error {
 	if z.err == io.EOF && z.pos < len(z.buf) {
 		return nil
 	}
@@ -148,14 +150,14 @@ func (z *Lexer) Err() error {
 
 // Free frees up bytes of length n from previously shifted tokens.
 // Each call to Shift should at one point be followed by a call to Free with a length returned by ShiftLen.
-func (z *Lexer) Free(n int) {
+func (z *StreamLexer) Free(n int) {
 	z.free += n
 }
 
 // Peek returns the ith byte relative to the end position and possibly does an allocation.
 // Peek returns zero when an error has occurred, Err returns the error.
 // TODO: inline function
-func (z *Lexer) Peek(pos int) byte {
+func (z *StreamLexer) Peek(pos int) byte {
 	pos += z.pos
 	if uint(pos) < uint(len(z.buf)) { // uint for BCE
 		return z.buf[pos]
@@ -164,7 +166,7 @@ func (z *Lexer) Peek(pos int) byte {
 }
 
 // PeekRune returns the rune and rune length of the ith byte relative to the end position.
-func (z *Lexer) PeekRune(pos int) (rune, int) {
+func (z *StreamLexer) PeekRune(pos int) (rune, int) {
 	// from unicode/utf8
 	c := z.Peek(pos)
 	if c < 0xC0 {
@@ -178,33 +180,33 @@ func (z *Lexer) PeekRune(pos int) (rune, int) {
 }
 
 // Move advances the position.
-func (z *Lexer) Move(n int) {
+func (z *StreamLexer) Move(n int) {
 	z.pos += n
 }
 
 // Pos returns a mark to which can be rewinded.
-func (z *Lexer) Pos() int {
+func (z *StreamLexer) Pos() int {
 	return z.pos - z.start
 }
 
 // Rewind rewinds the position to the given position.
-func (z *Lexer) Rewind(pos int) {
+func (z *StreamLexer) Rewind(pos int) {
 	z.pos = z.start + pos
 }
 
 // Lexeme returns the bytes of the current selection.
-func (z *Lexer) Lexeme() []byte {
+func (z *StreamLexer) Lexeme() []byte {
 	return z.buf[z.start:z.pos]
 }
 
 // Skip collapses the position to the end of the selection.
-func (z *Lexer) Skip() {
+func (z *StreamLexer) Skip() {
 	z.start = z.pos
 }
 
 // Shift returns the bytes of the current selection and collapses the position to the end of the selection.
 // It also returns the number of bytes we moved since the last call to Shift. This can be used in calls to Free.
-func (z *Lexer) Shift() []byte {
+func (z *StreamLexer) Shift() []byte {
 	if z.pos > len(z.buf) { // make sure we peeked at least as much as we shift
 		z.read(z.pos - 1)
 	}
@@ -214,7 +216,7 @@ func (z *Lexer) Shift() []byte {
 }
 
 // ShiftLen returns the number of bytes moved since the last call to ShiftLen. This can be used in calls to Free because it takes into account multiple Shifts or Skips.
-func (z *Lexer) ShiftLen() int {
+func (z *StreamLexer) ShiftLen() int {
 	n := z.start - z.prevStart
 	z.prevStart = z.start
 	return n
