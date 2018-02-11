@@ -24,23 +24,6 @@
 #   go-tests = true
 #   unused-packages = true
 
-
-[[constraint]]
-  branch = "master"
-  name = "github.com/alexflint/go-arg"
-
-[[constraint]]
-  name = "github.com/go-chi/chi"
-  version = "3.3.2"
-
-[[constraint]]
-  branch = "master"
-  name = "github.com/nstratos/go-myanimelist"
-
-[[constraint]]
-  name = "github.com/tdewolff/minify"
-  version = "2.3.4"
-
 [prune]
   non-go = true
   go-tests = true
