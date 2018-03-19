@@ -34,6 +34,7 @@ func main() {
 
 	r.Route("/{username}", func(r chi.Router) {
 		r.Use(middleware.ThrottleBacklog(5, 0, 5*time.Second))
+		r.Use(minifyMiddleware)
 
 		r.Get("/anime.css", func(w http.ResponseWriter, r *http.Request) {
 			username := chi.URLParam(r, "username")
@@ -51,9 +52,8 @@ func main() {
 
 			w.Header().Set("Content-Type", "text/css; charset=utf-8")
 
-			wr := maybeMinify(w, r)
 			for _, v := range list.Anime {
-				renderCSS(wr, v.SeriesTitle, v.SeriesAnimeDBID, v.SeriesImage)
+				renderCSS(w, v.SeriesTitle, v.SeriesAnimeDBID, v.SeriesImage)
 			}
 		})
 
@@ -73,9 +73,8 @@ func main() {
 
 			w.Header().Set("Content-Type", "text/css; charset=utf-8")
 
-			wr := maybeMinify(w, r)
 			for _, v := range list.Manga {
-				renderCSS(wr, v.SeriesTitle, v.SeriesMangaDBID, v.SeriesImage)
+				renderCSS(w, v.SeriesTitle, v.SeriesMangaDBID, v.SeriesImage)
 			}
 		})
 	})

@@ -1,22 +1,31 @@
 package main
 
 import (
-	"io"
+	"log"
 	"net/http"
 
 	"github.com/tdewolff/minify"
 	"github.com/tdewolff/minify/css"
 )
 
-var minifier = minify.New()
-
-func init() {
+func minifyMiddleware(next http.Handler) http.Handler {
+	minifier := minify.New()
 	minifier.AddFunc("text/css", css.Minify)
-}
 
-func maybeMinify(w io.Writer, r *http.Request) io.Writer {
-	if r.FormValue("minify") == "true" {
-		return minifier.Writer("text/css", w)
+	fn := func(w http.ResponseWriter, r *http.Request) {
+		if r.FormValue("minify") == "true" {
+			mw := minifier.ResponseWriter(w, r)
+			defer func() {
+				if err := mw.Close(); err != nil {
+					log.Println(err)
+				}
+			}()
+
+			w = mw
+		}
+
+		next.ServeHTTP(w, r)
 	}
-	return w
+
+	return http.HandlerFunc(fn)
 }
